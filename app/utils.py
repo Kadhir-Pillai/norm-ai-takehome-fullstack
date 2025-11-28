@@ -282,7 +282,7 @@ class QdrantService:
         citations = []
         for node in response.source_nodes:
             source_match = self.source_regex.match(node.text)
-            source_num, text = (source_match.group('number'), source_match.group('text')) \
+            source_num, text = (int(source_match.group('number')), source_match.group('text')) \
                 if source_match else (None, node.text)
             citations.append(Citation(
                 source=node.metadata.get("source") + " > " + node.metadata.get("section"),
